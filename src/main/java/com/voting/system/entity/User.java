@@ -5,7 +5,10 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
 import java.time.LocalDateTime;
@@ -40,6 +43,9 @@ public class User{
     private  ReligionEnum religion;
 
     private String nationality;
+
+    @OneToOne(mappedBy = "users",cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private  Aspirants aspirant;
 
     private  String idNumber;
 
