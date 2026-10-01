@@ -11,7 +11,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.UUID;
 
 
@@ -49,9 +49,9 @@ public class User{
 
     private  String idNumber;
 
-    private LocalDateTime createdAt;
+    private Instant createdAt;
 
-    private  LocalDateTime updatedAt;
+    private  Instant updatedAt;
 
 
 //setters and getters
@@ -112,10 +112,10 @@ public  String getNationality(){
     return  nationality;
 }
 
-public  void setCreatedAt(LocalDateTime createdAt){
+public  void setCreatedAt(Instant createdAt){
     this.createdAt=createdAt;
 }
-public  LocalDateTime getCreatedAt(){
+public  Instant getCreatedAt(){
     return  createdAt;
 }
 
@@ -134,10 +134,10 @@ public String getIdNumber(){
     return  idNumber;
 }
 
-public void setUpdatedAt(LocalDateTime updatedAt){
+public void setUpdatedAt(Instant updatedAt){
     this.updatedAt=updatedAt;
 }
-public  LocalDateTime getUpdatedAt(){
+public  Instant getUpdatedAt(){
     return  updatedAt;
 }
 
