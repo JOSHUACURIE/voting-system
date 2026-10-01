@@ -7,13 +7,14 @@ import  jakarta.persistence.Column;
 import  jakarta.persistence.Enumerated;
 import  jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import  jakarta.persistence.GenerationType;
 import  jakarta.persistence.GeneratedValue;
 import  jakarta.persistence.FetchType;
 import  java.util.UUID;
-import  java.time.LocalDateTime;
 
+import java.time.Instant;
 
 @Entity 
 @Table(name = "aspirants")
@@ -30,30 +31,30 @@ public  class Aspirants{
 
     private  String previous_occupation;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @Column(name="position_id",nullable = false)
+    @ManyToOne (fetch = FetchType.LAZY)
+    @JoinColumn(name="position_id",nullable = false)
     private Position positionId;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @Column(name = "country_id",nullable = false)
-    private Country countryId;
+    private Country country;
 
 @Enumerated (EnumType.STRING)
 @Column(name = "role")
 private  RoleEnum role;
 
-@OneToOne(fetch = FetchType.LAZY)
-@Column(name = "county_id")
-private County countyId;
+@ManyToOne(fetch = FetchType.LAZY)
+@JoinColumn (name = "county_id",nullable = false)
+private County county;
 
 
-@OneToOne(fetch = FetchType.LAZY)
+@ManyToOne(fetch = FetchType.LAZY)
 @Column(name = "constituency_id")
 private  Constituency constituency;
 
 @OneToOne(fetch = FetchType.LAZY)
 @Column(name = "ward_id")
-private  Ward waidId;
+private  Ward ward;
 
 
 @OneToOne(fetch = FetchType.LAZY)
@@ -70,13 +71,102 @@ private  ApplicationStatus applicationStatus;
 @Column(name ="profile_picture")
 private  String profilePicture;
 
-private LocalDateTime createdAt;
-private LocalDateTime updatedAt;  
+private Instant createdAt;
+private Instant updatedAt;  
 
 
 
 //setters and getters
+public  void setId(UUID id){
+    this.id=id;
+}
+public  UUID getId(){
+    return  id;
+}
 
+public void setAge(Long age){
+    this.age=age;
+}
+public  Long getAge(){
+    return  age;
+}
+
+public  void setPreviousOccupation(String previous_occupation){
+    this.previous_occupation=previous_occupation;
+}
+public String getPreviousOccupation(){
+    return  previous_occupation;
+}
+
+public  void setPositionId(Position positionId){
+    this.positionId=positionId;
+}
+public  Position getPositionId(){
+    return  positionId;
+}
+public  void setUserId(User userId){
+    this.userId=userId;
+}
+public  User getUserId(){
+    return  userId;
+}
+public  void setCountryId(Country countryId){
+    this.country=countryId;
+}
+public  Country getCountryId(){
+    return  country;
+}
+
+public void setRole(RoleEnum role){
+    this.role=role;
+}
+public  RoleEnum getRole(){
+    return  role;
+}
+
+public void setCountyId(County countyId){
+    this.county=countyId;
+}
+public County getCountyId(){
+    return county;
+}
+
+public void  setConstituencyId(Constituency constituency){
+    this.constituency=constituency;
+}
+
+public  Constituency getConstituencyId(){
+    return constituency;
+}
+
+public void setWardId(Ward wardId){
+    this.ward=wardId;
+}
+
+public  Ward getWardId(){
+    return  ward;
+}
+
+public void setNextOfKin(String nextOfKinIdNumber){
+    this.nextOfKinIdNumber=nextOfKinIdNumber;
+}
+public  String getNextOfKinIdNumber(){
+    return  nextOfKinIdNumber;
+}
+
+public void setCreatedAt(Instant createdAt){
+this.createdAt=createdAt;
+}
+public Instant getCreatedAt(){
+    return  createdAt;
+}
+
+public  void setUpdatedAt(Instant updatedAt){
+    this.updatedAt=updatedAt;
+}
+public  Instant getUpdatedAt(){
+    return updatedAt;
+}
 
 
 
