@@ -49,8 +49,10 @@ public class User{
 
     private  String idNumber;
 
+    @Column(name = "created_at")
     private Instant createdAt;
 
+    @Column(name = "updated_at")
     private  Instant updatedAt;
 
 

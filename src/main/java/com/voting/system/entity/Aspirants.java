@@ -36,7 +36,7 @@ public  class Aspirants{
     private Position positionId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "country_id",nullable = false)
+    @JoinColumn(name = "country_id",nullable = false)
     private Country country;
 
 @Enumerated (EnumType.STRING)
@@ -49,16 +49,16 @@ private County county;
 
 
 @ManyToOne(fetch = FetchType.LAZY)
-@Column(name = "constituency_id")
+@JoinColumn (name = "constituency_id")
 private  Constituency constituency;
 
 @OneToOne(fetch = FetchType.LAZY)
-@Column(name = "ward_id")
+@JoinColumn(name = "ward_id")
 private  Ward ward;
 
 
 @OneToOne(fetch = FetchType.LAZY)
-@Column(name = "political_party_id")
+@JoinColumn(name = "political_party_id")
 private  PoliticalParties partyId;
 
 private  String nextOfKinIdNumber;
@@ -167,13 +167,6 @@ public  void setUpdatedAt(Instant updatedAt){
 public  Instant getUpdatedAt(){
     return updatedAt;
 }
-
-
-
-
-
-
-
 
 
 }
