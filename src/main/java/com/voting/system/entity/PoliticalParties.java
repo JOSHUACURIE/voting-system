@@ -5,10 +5,9 @@ import jakarta.persistence.Column;
 import  jakarta.persistence.Entity;
 import  jakarta.persistence.Id;
 import java.time.Instant;
-import  jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToOne;
+
 import jakarta.persistence.Table;
-import jakarta.persistence.JoinColumn;
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
@@ -44,6 +43,83 @@ public  class PoliticalParties {
     private Instant updatedAt;
 
     //setters and getters
+    public void setId(UUID id){
+        this.id=id;
+    }
+    public UUID getId(){
+        return id;
+    }
+    public void setName(String name){
+        this.name=name;
+    }
+    public String getName(){
+        return name;
+    }
+    public void setMotto(String motto){
+     this.motto=motto;
+    }
+    public  String getMotto(){
+        return  motto;
+    }
+    public  void setLogoUrl(String logoUrl){
+        this.logoUrl=logoUrl;
+    }
+    public String getLogoUrl(){
+        return  logoUrl;
+    }
+    public void setPartyLeader(String partyLeader){
+        this.partyLeader=partyLeader;
+    }
+    public  String getPartyLeader(){
+        return  partyLeader;
+    }
+    public  void setDeputyPartyLeader(String dPartleader){
+        this.dPartyLeader=dPartleader;
+    }
+    public  String getDeputyPartyLeader(){
+        return dPartyLeader;
+    }
+    public void setNationalChairperson(String nChairperson){
+        this.nChairperson=nChairperson;
+    }
+    public String getNationalChairPerson(){
+        return  nChairperson;
+    }
+
+    public void setPartyDescription(String description){
+    this.description=description;
+    }
+    public String getPartyDescription(){
+        return description;
+    }
+    public  void setRegistrationCertUrl(String regCertUrl){
+        this.regCertUrl=regCertUrl;
+    }
+    public String getRegistrationCertUrl(){
+        return regCertUrl;
+    }
+    public void setCreatedAt(Instant createdAt){
+        this.createdAt=createdAt;
+    }
+    public Instant getCreatedAt(){
+        return  createdAt;
+    }
+    public  void setUpdatedAt(Instant updatedAt){
+    this.updatedAt=updatedAt;
+    }
+
+
+//instant timestamping
+    @jakarta.persistence.PrePersist
+    protected void onCreate() {
+        this.createdAt = Instant.now();
+        this.updatedAt = Instant.now();
+    }
+
+    @jakarta.persistence.PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = Instant.now();
+    }
 
 
     
