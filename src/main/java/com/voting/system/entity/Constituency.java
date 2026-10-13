@@ -7,10 +7,12 @@ import  jakarta.persistence.Id;
 import java.time.Instant;
 import  jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 @Entity 
+@Table (name = "constituency")
 public  class Constituency {
         @Id 
     @GeneratedValue (strategy = GenerationType.UUID)
