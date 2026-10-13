@@ -143,4 +143,17 @@ public  Instant getUpdatedAt(){
     return  updatedAt;
 }
 
+
+    //instant timestamping
+    @jakarta.persistence.PrePersist
+    protected void onCreate() {
+        this.createdAt = Instant.now();
+        this.updatedAt = Instant.now();
+    }
+
+    @jakarta.persistence.PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = Instant.now();
+    }
+
 }
