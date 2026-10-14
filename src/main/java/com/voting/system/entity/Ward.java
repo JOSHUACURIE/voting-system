@@ -22,7 +22,7 @@ import  jakarta.persistence.ManyToOne;
 @Table(name="ward")
 public class Ward {
 @Id 
-@GeneratedValue(strategy =GenerationType.IDENTITY)
+@GeneratedValue(strategy =GenerationType.UUID)
 private  UUID id;
 
 

@@ -19,7 +19,7 @@ import jakarta.persistence.GenerationType;
 @Table(name = "political_parties")
 public  class PoliticalParties {
     @Id 
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.UUID)
     private UUID id;
 
     private String name;
