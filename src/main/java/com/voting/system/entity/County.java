@@ -18,7 +18,7 @@ import jakarta.persistence.GenerationType;
 @Table(name = "county")
 public class County {
     @Id 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     private  String name;
