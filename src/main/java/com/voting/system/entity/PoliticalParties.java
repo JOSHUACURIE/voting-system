@@ -2,11 +2,13 @@ package com.voting.system.entity;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import  jakarta.persistence.Entity;
 import  jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.Table;
 
@@ -45,8 +47,8 @@ public  class PoliticalParties {
     private Instant updatedAt;
 
     //children
-    @OneToMany(mappedBy = "political_parties")
-private List<Aspirants>aspirants;
+@OneToMany(mappedBy = "party", cascade = CascadeType.ALL, orphanRemoval = true)
+private List<Aspirants> aspirants = new ArrayList<>();
 
     //setters and getters
     public void setId(UUID id){

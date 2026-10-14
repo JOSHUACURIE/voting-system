@@ -49,8 +49,10 @@ public  class Constituency {
 
 @OneToMany(mappedBy = "constituency")
 private List<Aspirants>aspirants;
-@OneToMany(mappedBy = "consituency")
+@OneToMany(mappedBy = "constituency")
 private List<Competition>competititors;
+@OneToMany(mappedBy = "constituency")
+private List<Ward>wards;
     //setters and getters
     public void setId(UUID id){
        this.id=id;

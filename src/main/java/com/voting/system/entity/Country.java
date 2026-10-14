@@ -40,8 +40,7 @@ private List<Aspirants>aspirants;
 private List<Competition>competitors;
 
 
-@OneToMany(mappedBy = "country")
-private List<User>users;
+
 @OneToMany(mappedBy = "country")
 private  List<County>counties;
 

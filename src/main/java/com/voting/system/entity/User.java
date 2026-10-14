@@ -44,7 +44,7 @@ public class User{
 
     private String nationality;
 
-    @OneToOne(mappedBy = "users",cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private  Aspirants aspirant;
 
     private  String idNumber;

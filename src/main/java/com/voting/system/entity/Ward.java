@@ -51,7 +51,7 @@ private  Instant createdAt;
 private Instant updatedAt;
 
 //children
-@OneToMany(mappedBy = "wards")
+@OneToMany(mappedBy = "ward")
 private List<Aspirants>aspirants;
 @OneToMany(mappedBy = "ward")
 private List<Competition>competititors;

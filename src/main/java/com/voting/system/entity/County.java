@@ -48,6 +48,8 @@ private List<Competition>competitors;
 @OneToMany (mappedBy = "county")
 private List<Constituency>constituencies;
 
+@OneToMany (mappedBy = "county")
+private List<Ward>wards;
 
     //setters and getters
     public void setId(UUID id){
