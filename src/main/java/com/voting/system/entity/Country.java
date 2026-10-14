@@ -1,11 +1,13 @@
 package com.voting.system.entity;
 import  jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
 import jakarta.persistence.GeneratedValue;
 import  jakarta.persistence.GenerationType;
-import  jakarta.persistence.FetchType;
+
+import java.util.List;
 import java.util.UUID;
 import  jakarta.persistence.Column;
 import  java.time.Instant;
@@ -31,7 +33,8 @@ public  class Country {
     private  Instant updatedAt;
 
 //bidirectional relationships...owner
-
+@OneToMany(mappedBy = "country")
+private List<Aspirants>aspirants;
     //setter and getter methods
 
     public void setId(UUID id){

@@ -4,8 +4,10 @@ import java.util.UUID;
 import jakarta.persistence.Column;
 import  jakarta.persistence.Entity;
 import  jakarta.persistence.Id;
-import java.time.Instant;
+import jakarta.persistence.OneToMany;
 
+import java.time.Instant;
+import java.util.List;
 import jakarta.persistence.Table;
 
 import jakarta.persistence.GeneratedValue;
@@ -42,6 +44,9 @@ public  class PoliticalParties {
     @Column(name = "updated_at")
     private Instant updatedAt;
 
+    //children
+    @OneToMany(mappedBy = "country")
+private List<Aspirants>aspirants;
     //setters and getters
     public void setId(UUID id){
         this.id=id;

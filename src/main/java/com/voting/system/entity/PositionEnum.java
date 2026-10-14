@@ -7,5 +7,4 @@ SENATOR,
 WOMENREP,
 MP,
 MCA
-
 }

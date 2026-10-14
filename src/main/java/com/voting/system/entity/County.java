@@ -5,8 +5,10 @@ import jakarta.persistence.Column;
 import  jakarta.persistence.Entity;
 import  jakarta.persistence.Id;
 import java.time.Instant;
+import java.util.List;
 import  jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.GeneratedValue;
@@ -38,7 +40,8 @@ public class County {
 
 
     //children relationships
-
+@OneToMany(mappedBy = "country")
+private List<Aspirants>aspirants;
 
     //setters and getters
     public void setId(UUID id){

@@ -9,7 +9,10 @@ import java.time.Instant;
 import jakarta.persistence.Table;
 import  jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+
 import java.time.Instant;
+import  java.util.List;
 import  jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.GeneratedValue;
@@ -47,6 +50,9 @@ private  Instant createdAt;
 @Column (name = "updated_at")
 private Instant updatedAt;
 
+//children
+@OneToMany(mappedBy = "country")
+private List<Aspirants>aspirants;
 
 public  void setId(UUID id){
     this.id=id;

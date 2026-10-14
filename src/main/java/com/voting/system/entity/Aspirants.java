@@ -1,172 +1,140 @@
 package com.voting.system.entity;
 
-import  jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import  jakarta.persistence.Table;
-import  jakarta.persistence.Column;
-import  jakarta.persistence.Enumerated;
-import  jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
-import  jakarta.persistence.GenerationType;
-import  jakarta.persistence.GeneratedValue;
-import  jakarta.persistence.FetchType;
-import  java.util.UUID;
-
+import jakarta.persistence.*;
 import java.time.Instant;
+import java.util.UUID;
 
 @Entity 
 @Table(name = "aspirants")
-public  class Aspirants{
+public class Aspirants {
+
     @Id 
-    @GeneratedValue (strategy = GenerationType.UUID)
-    private  UUID id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
+    // 1. User linking: ONE user can register as ONE aspirant profile
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id",nullable = false,unique = true)
-    private  User userId;
+    @JoinColumn(name = "user_id", nullable = false, unique = true)
+    private User user;
 
-    private  Long age;
+    private Long age;
 
-    private  String previous_occupation;
+    @Column(name = "previous_occupation")
+    private String previousOccupation;
 
-    @ManyToOne (fetch = FetchType.LAZY)
-    @JoinColumn(name="position_id",nullable = false)
-    private Position positionId;
-
+    // 2. Link to Competition (Contest/Race)
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "country_id",nullable = false)
+    @JoinColumn(name = "competition_id", nullable = false)
+    private Competition competition;
+
+    // 3. Optional: Direct position reference (if needed alongside competition)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "position")
+    private PositionEnum position;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private RoleEnum role;
+
+    // 4. Geographical links (ALL MUST BE NULLABLE for national/county candidates)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "country_id", nullable = true)
     private Country country;
 
-@Enumerated (EnumType.STRING)
-@Column(name = "role")
-private  RoleEnum role;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "county_id", nullable = true)
+    private County county;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn (name = "county_id",nullable = false)
-private County county;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "constituency_id", nullable = true)
+    private Constituency constituency;
 
+    // Fixed: Changed from @OneToOne to @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ward_id", nullable = true)
+    private Ward ward;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn (name = "constituency_id")
-private  Constituency constituency;
+    // Fixed: Changed from @OneToOne to @ManyToOne (many aspirants belong to 1 party)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "political_party_id")
+    private PoliticalParties party;
 
-@OneToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "ward_id")
-private  Ward ward;
+    @Column(name = "next_of_kin_id_number")
+    private String nextOfKinIdNumber;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "application_status")
+    private ApplicationStatus applicationStatus;
 
-@OneToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "political_party_id")
-private  PoliticalParties partyId;
+    @Column(name = "profile_picture")
+    private String profilePicture;
 
-private  String nextOfKinIdNumber;
+    @Column(name = "created_at", updatable = false)
+    private Instant createdAt;
 
-@Enumerated (EnumType.STRING)
-@Column(name = "application_status")
-private  ApplicationStatus applicationStatus;
+    @Column(name = "updated_at")
+    private Instant updatedAt;
 
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = Instant.now();
+        this.updatedAt = Instant.now();
+    }
 
-@Column(name ="profile_picture")
-private  String profilePicture;
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = Instant.now();
+    }
 
-private Instant createdAt;
-private Instant updatedAt;  
+    // ==========================================
+    // GETTERS & SETTERS
+    // ==========================================
 
+    public UUID getId() { return id; }
+    public void setId(UUID id) { this.id = id; }
 
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
 
-//setters and getters
-public  void setId(UUID id){
-    this.id=id;
-}
-public  UUID getId(){
-    return  id;
-}
+    public Long getAge() { return age; }
+    public void setAge(Long age) { this.age = age; }
 
-public void setAge(Long age){
-    this.age=age;
-}
-public  Long getAge(){
-    return  age;
-}
+    public String getPreviousOccupation() { return previousOccupation; }
+    public void setPreviousOccupation(String previousOccupation) { this.previousOccupation = previousOccupation; }
 
-public  void setPreviousOccupation(String previous_occupation){
-    this.previous_occupation=previous_occupation;
-}
-public String getPreviousOccupation(){
-    return  previous_occupation;
-}
+    public Competition getCompetition() { return competition; }
+    public void setCompetition(Competition competition) { this.competition = competition; }
 
-public  void setPositionId(Position positionId){
-    this.positionId=positionId;
-}
-public  Position getPositionId(){
-    return  positionId;
-}
-public  void setUserId(User userId){
-    this.userId=userId;
-}
-public  User getUserId(){
-    return  userId;
-}
-public  void setCountryId(Country countryId){
-    this.country=countryId;
-}
-public  Country getCountryId(){
-    return  country;
-}
+    public PositionEnum getPosition() { return position; }
+    public void setPosition(PositionEnum position) { this.position = position; }
 
-public void setRole(RoleEnum role){
-    this.role=role;
-}
-public  RoleEnum getRole(){
-    return  role;
-}
+    public RoleEnum getRole() { return role; }
+    public void setRole(RoleEnum role) { this.role = role; }
 
-public void setCountyId(County countyId){
-    this.county=countyId;
-}
-public County getCountyId(){
-    return county;
-}
+    public Country getCountry() { return country; }
+    public void setCountry(Country country) { this.country = country; }
 
-public void  setConstituencyId(Constituency constituency){
-    this.constituency=constituency;
-}
+    public County getCounty() { return county; }
+    public void setCounty(County county) { this.county = county; }
 
-public  Constituency getConstituencyId(){
-    return constituency;
-}
+    public Constituency getConstituency() { return constituency; }
+    public void setConstituency(Constituency constituency) { this.constituency = constituency; }
 
-public void setWardId(Ward wardId){
-    this.ward=wardId;
-}
+    public Ward getWard() { return ward; }
+    public void setWard(Ward ward) { this.ward = ward; }
 
-public  Ward getWardId(){
-    return  ward;
-}
+    public PoliticalParties getParty() { return party; }
+    public void setParty(PoliticalParties party) { this.party = party; }
 
-public void setNextOfKin(String nextOfKinIdNumber){
-    this.nextOfKinIdNumber=nextOfKinIdNumber;
-}
-public  String getNextOfKinIdNumber(){
-    return  nextOfKinIdNumber;
-}
+    public String getNextOfKinIdNumber() { return nextOfKinIdNumber; }
+    public void setNextOfKinIdNumber(String nextOfKinIdNumber) { this.nextOfKinIdNumber = nextOfKinIdNumber; }
 
-public void setCreatedAt(Instant createdAt){
-this.createdAt=createdAt;
-}
-public Instant getCreatedAt(){
-    return  createdAt;
-}
+    public ApplicationStatus getApplicationStatus() { return applicationStatus; }
+    public void setApplicationStatus(ApplicationStatus applicationStatus) { this.applicationStatus = applicationStatus; }
 
-public  void setUpdatedAt(Instant updatedAt){
-    this.updatedAt=updatedAt;
-}
-public  Instant getUpdatedAt(){
-    return updatedAt;
-}
+    public String getProfilePicture() { return profilePicture; }
+    public void setProfilePicture(String profilePicture) { this.profilePicture = profilePicture; }
 
-
+    public Instant getCreatedAt() { return createdAt; }
+    public Instant getUpdatedAt() { return updatedAt; }
 }

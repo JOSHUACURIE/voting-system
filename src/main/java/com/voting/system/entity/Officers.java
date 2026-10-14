@@ -61,4 +61,46 @@ public  class Officers {
     public void setStaffNumber(String staffNumber){
         this.staffNumber=staffNumber;
     }
+    public String getStaffNumber(){
+        return staffNumber;
+    }
+    public  void setOfficerRole(RoleEnum role){
+        this.role=role;
+    }
+    public  RoleEnum getOfficerRole(){
+        return  role;
+    }
+
+    public  void setDesignation(String designation){
+        this.designation=designation;
+    }
+    public String getDesignation(){
+        return  designation;
+    }
+    public void setDepartment(String department){
+        this.department=department;
+    }
+    public String getDepartment(){
+        return  department;
+    }
+     public  void setCreatedAt(Instant createdAt){
+        this.createdAt=createdAt;
+     }
+     public Instant getCreatedAt(){
+        return  createdAt;
+     }
+     public  void setUpdatedAt(Instant updatedAt){
+        this.updatedAt=updatedAt;
+     }
+        //instant timestamping
+    @jakarta.persistence.PrePersist
+    protected void onCreate() {
+        this.createdAt = Instant.now();
+        this.updatedAt = Instant.now();
+    }
+
+    @jakarta.persistence.PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = Instant.now();
+    }
 }
