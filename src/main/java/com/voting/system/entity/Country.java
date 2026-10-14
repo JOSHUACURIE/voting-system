@@ -40,6 +40,18 @@ private List<Aspirants>aspirants;
 private List<Competition>competitors;
 
 
+@OneToMany(mappedBy = "country")
+private List<User>users;
+@OneToMany(mappedBy = "country")
+private  List<County>counties;
+
+@OneToMany(mappedBy = "country")
+private List<Constituency>constituencies;
+
+@OneToMany(mappedBy = "country")
+private List<Ward>wards;
+
+
 
     //setter and getter methods
 

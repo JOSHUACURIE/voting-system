@@ -45,6 +45,10 @@ private List<Aspirants>aspirants;
 @OneToMany(mappedBy = "county")
 private List<Competition>competitors;
 
+@OneToMany (mappedBy = "county")
+private List<Constituency>constituencies;
+
+
     //setters and getters
     public void setId(UUID id){
         this.id=id;
