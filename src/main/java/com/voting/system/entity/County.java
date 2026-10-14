@@ -40,8 +40,10 @@ public class County {
 
 
     //children relationships
-@OneToMany(mappedBy = "country")
+@OneToMany(mappedBy = "county")
 private List<Aspirants>aspirants;
+@OneToMany(mappedBy = "county")
+private List<Competition>competitors;
 
     //setters and getters
     public void setId(UUID id){

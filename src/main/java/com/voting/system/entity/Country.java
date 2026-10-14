@@ -35,6 +35,12 @@ public  class Country {
 //bidirectional relationships...owner
 @OneToMany(mappedBy = "country")
 private List<Aspirants>aspirants;
+
+@OneToMany(mappedBy="country")
+private List<Competition>competitors;
+
+
+
     //setter and getter methods
 
     public void setId(UUID id){

@@ -45,8 +45,9 @@ public  class PoliticalParties {
     private Instant updatedAt;
 
     //children
-    @OneToMany(mappedBy = "country")
+    @OneToMany(mappedBy = "political_parties")
 private List<Aspirants>aspirants;
+
     //setters and getters
     public void setId(UUID id){
         this.id=id;

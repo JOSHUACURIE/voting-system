@@ -47,8 +47,10 @@ public  class Constituency {
     
     //relationships..children
 
-@OneToMany(mappedBy = "country")
+@OneToMany(mappedBy = "constituency")
 private List<Aspirants>aspirants;
+@OneToMany(mappedBy = "consituency")
+private List<Competition>competititors;
     //setters and getters
     public void setId(UUID id){
        this.id=id;

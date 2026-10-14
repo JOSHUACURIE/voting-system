@@ -51,8 +51,10 @@ private  Instant createdAt;
 private Instant updatedAt;
 
 //children
-@OneToMany(mappedBy = "country")
+@OneToMany(mappedBy = "wards")
 private List<Aspirants>aspirants;
+@OneToMany(mappedBy = "ward")
+private List<Competition>competititors;
 
 public  void setId(UUID id){
     this.id=id;
