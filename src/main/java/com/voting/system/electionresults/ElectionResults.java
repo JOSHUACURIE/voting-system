@@ -1,4 +1,4 @@
-package com.voting.system.entity;
+package com.voting.system.electionresults;
 
 
 import java.util.UUID;

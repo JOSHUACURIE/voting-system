@@ -1,4 +1,4 @@
-package com.voting.system.entity;
+package com.voting.system.country;
 import  jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -9,6 +9,13 @@ import  jakarta.persistence.GenerationType;
 
 import java.util.List;
 import java.util.UUID;
+
+import com.voting.system.competition.Competition;
+import com.voting.system.constituency.Constituency;
+import com.voting.system.aspirants.*;
+import com.voting.system.county.*;
+import com.voting.system.ward.*;
+
 import  jakarta.persistence.Column;
 import  java.time.Instant;
 

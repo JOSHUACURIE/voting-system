@@ -1,5 +1,8 @@
-package com.voting.system.entity;
+package com.voting.system.politicalparties;
 import java.util.UUID;
+
+
+import com.voting.system.aspirants.*;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.CascadeType;

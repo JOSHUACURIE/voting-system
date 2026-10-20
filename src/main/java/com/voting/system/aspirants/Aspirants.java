@@ -1,9 +1,16 @@
-package com.voting.system.entity;
+package com.voting.system.aspirants;
 
 import jakarta.persistence.*;
 import java.time.Instant;
 import java.util.UUID;
-
+import com.voting.system.enums.*;
+import com.voting.system.constituency.Constituency;
+import com.voting.system.ward.Ward;
+import com.voting.system.users.User;
+import com.voting.system.country.Country;
+import com.voting.system.politicalparties.PoliticalParties;
+import com.voting.system.county.County;
+import com.voting.system.competition.Competition;
 @Entity 
 @Table(name = "aspirants")
 public class Aspirants {

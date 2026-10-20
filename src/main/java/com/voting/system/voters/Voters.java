@@ -1,4 +1,4 @@
-package com.voting.system.entity;
+package com.voting.system.voters;
 import jakarta.persistence.*;
 import java.util.UUID;
 

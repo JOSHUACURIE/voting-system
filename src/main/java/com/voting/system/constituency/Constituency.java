@@ -1,5 +1,11 @@
-package com.voting.system.entity;
+package com.voting.system.constituency;
 import java.util.UUID;
+
+import com.voting.system.country.Country;
+import com.voting.system.county.County;
+import com.voting.system.competition.*;
+import com.voting.system.aspirants.*;
+import  com.voting.system.ward.*;
 
 import jakarta.persistence.Column;
 import  jakarta.persistence.Entity;

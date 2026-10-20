@@ -1,5 +1,8 @@
-package com.voting.system.entity;
+package com.voting.system.officers;
 import java.util.UUID;
+
+import com.voting.system.enums.*;
+import com.voting.system.users.User;
 
 import jakarta.persistence.Column;
 import  jakarta.persistence.Entity;
@@ -8,9 +11,9 @@ import jakarta.persistence.Enumerated;
 import  jakarta.persistence.Id;
 import java.time.Instant;
 import  jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToOne;
+
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

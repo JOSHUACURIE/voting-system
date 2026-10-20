@@ -1,4 +1,4 @@
-package com.voting.system.entity;
+package com.voting.system.enums;
 
 public enum ReligionEnum {
     CHRISTIANITY,
