@@ -4,9 +4,8 @@ import java.util.UUID;
 import com.voting.system.competition.Competition;
 import com.voting.system.constituency.Constituency;
 import com.voting.system.country.Country;
-import com.voting.system.county.*;
-import com.voting.system.aspirants.*;
-import com.voting.system.ward.*;
+import com.voting.system.aspirants.Aspirants;
+import com.voting.system.ward.Ward;
 
 
 import jakarta.persistence.Column;

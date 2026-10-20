@@ -1,7 +1,7 @@
 package com.voting.system.users;
 
 
-import com.voting.system.aspirants.*;
+import com.voting.system.aspirants.Aspirants;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
