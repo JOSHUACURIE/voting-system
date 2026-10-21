@@ -2,6 +2,8 @@ package com.voting.system.country;
 import  jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 import jakarta.persistence.GeneratedValue;
@@ -57,7 +59,17 @@ private List<Constituency>constituencies;
 @OneToMany(mappedBy = "country")
 private List<Ward>wards;
 
+@PrePersist
+void onCreate() {
+    Instant now = Instant.now();
+    this.createdAt = now;
+    this.updatedAt = now;
+}
 
+@PreUpdate
+void onUpdate() {
+    this.updatedAt = Instant.now();
+}
 
     //setter and getter methods
 
