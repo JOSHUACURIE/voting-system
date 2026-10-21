@@ -4,6 +4,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.voting.system.country.Country;
 import com.voting.system.country.dto.CountryResponse;
 import com.voting.system.country.CountryMapper;
+import com.voting.system.common.exception.ResourceNotFoundException;
 import com.voting.system.country.dto.CreateCountryRequest;
 import  java.util.List;
 import java.util.UUID;
@@ -38,7 +39,7 @@ Country saved=countryRepository.saveAndFlush(country);
 return countryMapper.toResponse(saved);
     }
 
-
+@Transactional (readOnly=true)
 public  List<CountryResponse> findAllCountries(){
 return  countryRepository.findAll()
 .stream()
@@ -46,10 +47,10 @@ return  countryRepository.findAll()
 .toList();
 }
 
-// public CountryResponse getCountryById(UUID id){
-//     Country country=countryRepository.findById(id)
-//     .orElseThrow(()->ResourceNotFoundException("Country not found "+id))
-// }
-
+public  CountryResponse findCountryById(UUID id){
+    Country country=countryRepository.findById(id)
+      .orElseThrow(() -> new ResourceNotFoundException("Country not found: " + id));
+      return  countryMapper.toResponse(country);
+}
     
 }

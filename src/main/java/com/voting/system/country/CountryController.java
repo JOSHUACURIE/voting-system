@@ -6,6 +6,7 @@ import com.voting.system.country.CountryRepository;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import  java.util.List;
+import  java.util.UUID;
 import org.springframework.http.ResponseEntity;
 
 
@@ -32,4 +33,9 @@ public class CountryController {
         return  ResponseEntity.ok(countryService.findAllCountries());
     }
 
+    @GetMapping("/:id")
+    public  ResponseEntity<CountryResponse>findById(@PathVariable UUID id){
+        return  ResponseEntity.ok(countryService.findCountryById(id));
+
+    }
 }
