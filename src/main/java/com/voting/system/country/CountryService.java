@@ -1,7 +1,7 @@
 package com.voting.system.country;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.voting.system.country.Country;
+
 import com.voting.system.country.dto.CountryResponse;
 import com.voting.system.country.CountryMapper;
 import com.voting.system.common.exception.ResourceNotFoundException;
