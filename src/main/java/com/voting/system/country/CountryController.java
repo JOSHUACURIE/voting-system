@@ -2,7 +2,7 @@ package com.voting.system.country;
 import org.springframework.web.bind.annotation.*;
 import  com.voting.system.country.dto.CountryResponse;
 import  com.voting.system.country.dto.CreateCountryRequest;
-import com.voting.system.country.CountryRepository;
+
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import  java.util.List;
