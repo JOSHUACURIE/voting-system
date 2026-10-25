@@ -8,7 +8,7 @@ public record ConstituencyResponse(
     String name,//
     String countryName,//
     String countyName,//
-    Instant registeredVoters,
+    Long registeredVoters,
     Instant createdAt,
     Instant updatedAt
 ) {
