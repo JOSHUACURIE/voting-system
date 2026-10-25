@@ -11,8 +11,7 @@ public  interface CountyMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     @Mapping(target = "registeredVoters", ignore = true)   
-    @Mapping(target = "country", ignore = true)            
-
+    @Mapping(target = "country", ignore = true)  
     County toEntity(CreateCountyRequest request);
 
     

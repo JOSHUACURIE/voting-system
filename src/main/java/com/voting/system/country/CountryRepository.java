@@ -13,6 +13,7 @@ import java.util.UUID;
  public interface CountryRepository extends JpaRepository<Country,UUID> {
  Optional<Country>findByName(String name);
  boolean existsByName(String name);
+ boolean existsById(UUID id);
  List<Country>findAll();
  Optional<Country>findById(UUID id);
  }
