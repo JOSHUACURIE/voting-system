@@ -1,7 +1,7 @@
 package com.voting.system.county;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import com.voting.system.county.County;
+
 import com.voting.system.county.dto.CountyResponse;
 import com.voting.system.county.dto.CreateCountyRequest;
 
@@ -17,6 +17,7 @@ public  interface CountyMapper {
 
     
     @Mapping(target = "countryId",   source = "country.id")
+    @Mapping(target = "countryName",source = "country.name")
     CountyResponse toResponse(County county);
 
 

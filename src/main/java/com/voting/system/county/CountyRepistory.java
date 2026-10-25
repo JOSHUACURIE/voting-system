@@ -14,6 +14,8 @@ public  interface CountyRepistory extends JpaRepository<County,UUID> {
     List<County> findByCountryId(UUID id);
      Optional<County> findById(UUID id);
     boolean existsByName(String name);
+    List<County>findAll();
+    Optional<County>findByName(String name);
     
 
     

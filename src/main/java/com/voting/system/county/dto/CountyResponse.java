@@ -6,6 +6,7 @@ public  record CountyResponse(
     String name,
     UUID countryId,
     Instant createdAt,
+    String countryName,
     Long registeredVoters,
     Instant updatedAt
 ) {
