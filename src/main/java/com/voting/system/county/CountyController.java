@@ -5,12 +5,25 @@ import jakarta.validation.Valid;
 import com.voting.system.county.dto.CountyResponse;
 import com.voting.system.county.dto.CreateCountyRequest;
 import org.springframework.web.bind.annotation.*;
+
+import com.voting.system.country.CountryController;
+import com.voting.system.country.CountryService;
+import  com.voting.system.county.CountyService;
 import  org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 @RestController 
 @RequestMapping("/api/county")
 public class CountyController {
-    
+    private  final CountyService countyService;
+
+    public CountyController(CountyService countyService){
+        this.countyService=countyService;
+    }
+@PostMapping("/create")
+public ResponseEntity<CountyResponse>register(@Valid @RequestBody CreateCountyRequest request){
+    CountyResponse response=countyService.createCounty(request);
+    return  ResponseEntity.status(HttpStatus.CREATED).body(response);
+}
     
 }
