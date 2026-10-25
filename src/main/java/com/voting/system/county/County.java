@@ -16,6 +16,7 @@ import java.util.List;
 import  jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.GeneratedValue;
@@ -97,16 +98,20 @@ private List<Ward>wards;
         return  updatedAt;
     }
 
-    //instant timestamping
-    @jakarta.persistence.PrePersist
-    protected void onCreate() {
-        this.createdAt = Instant.now();
-        this.updatedAt = Instant.now();
-    }
 
+public Long getRegisteredVoters() { return registeredVoters; }
+    //instant timestamping
+  
     @jakarta.persistence.PreUpdate
     protected void onUpdate() {
         this.updatedAt = Instant.now();
     }
-
+  @jakarta.persistence.PrePersist
+protected void onCreate() {
+    this.createdAt = Instant.now();
+    this.updatedAt = Instant.now();
+    if (this.registeredVoters == null) {
+        this.registeredVoters = 0L;
+    }
+}
 }

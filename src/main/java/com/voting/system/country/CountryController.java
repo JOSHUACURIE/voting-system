@@ -33,7 +33,7 @@ public class CountryController {
         return  ResponseEntity.ok(countryService.findAllCountries());
     }
 
-    @GetMapping("/:id")
+    @GetMapping("/{:id}")
     public  ResponseEntity<CountryResponse>findById(@PathVariable UUID id){
         return  ResponseEntity.ok(countryService.findCountryById(id));
 
