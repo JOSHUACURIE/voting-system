@@ -17,6 +17,7 @@ List<Constituency>findAll();
 boolean existsByName(String name);
 boolean existsById(UUID id);
 Optional<Constituency>findById(UUID id);
+void deleteById(UUID id);
 
 
 

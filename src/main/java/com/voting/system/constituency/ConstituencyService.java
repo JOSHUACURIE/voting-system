@@ -65,4 +65,12 @@ ConstituencyMapper constituencyMapper){
 
 
     }
+
+
+    public void deleteConstituency(UUID id){
+        if(!constituencyRepository.existsById(id)){
+            throw new ResourceNotFoundException("Constituency does not exist");
+        }
+        constituencyRepository.deleteById(id);;
+    }
 }

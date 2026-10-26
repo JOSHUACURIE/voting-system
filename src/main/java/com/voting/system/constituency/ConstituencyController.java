@@ -33,4 +33,10 @@ public ResponseEntity<List<ConstituencyResponse>>getAll(){
 public ResponseEntity<ConstituencyResponse>findById(@PathVariable  UUID id){
     return ResponseEntity.ok(constituencyService.findConstituencyById(id));
 }
+
+@DeleteMapping("/{id}")
+public ResponseEntity<Void>deleteConstituency(@PathVariable UUID id){
+    constituencyService.deleteConstituency(id);
+    return ResponseEntity.noContent().build();
+}
 }
