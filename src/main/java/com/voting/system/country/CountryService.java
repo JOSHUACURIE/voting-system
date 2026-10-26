@@ -27,7 +27,7 @@ public class CountryService {
         this.countryMapper=countryMapper;
     }
 
-    public CountryResponse createCountry(CreateCountryRequest request){
+ public CountryResponse createCountry(CreateCountryRequest request){
 if(countryRepository.existsByName(request.name())){
     throw new RuntimeException("Country already registered");
 }

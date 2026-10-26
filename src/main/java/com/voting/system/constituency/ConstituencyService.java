@@ -2,11 +2,15 @@ package com.voting.system.constituency;
 
 import jakarta.transaction.Transactional;
 
+import java.util.List;
+import java.util.UUID;
+
 import org.apache.tomcat.util.bcel.Const;
 import org.springframework.stereotype.Service;
 import com.voting.system.country.CountryRepository;
 import com.voting.system.county.CountyRepistory;
 import  com.voting.system.county.County;
+import com.voting.system.common.exception.ResourceNotFoundException;
 import com.voting.system.country.Country;
 import com.voting.system.constituency.dto.CreateConstituencyRequest;
 import com.voting.system.constituency.dto.ConstituencyResponse;
@@ -20,7 +24,7 @@ private final CountyRepistory countyRepistory;
 private  final ConstituencyRepository constituencyRepository;
 private  final ConstituencyMapper constituencyMapper;
 
-//constructor injection
+
 public  ConstituencyService(
 CountryRepository countryRepository,CountyRepistory countyRepistory,
 ConstituencyRepository constituencyRepository,
@@ -45,6 +49,20 @@ ConstituencyMapper constituencyMapper){
          Constituency saved=constituencyRepository.save(constituency);
 
          return  constituencyMapper.toResponse(saved);
+
+    }
+
+    public  List<ConstituencyResponse> findAllConstituencies(){
+        return constituencyRepository.findAll()
+        .stream()
+        .map(constituencyMapper::toResponse)
+        .toList();
+    }
+    public ConstituencyResponse findConstituencyById(UUID id){
+        Constituency constituency=constituencyRepository.findById(id)
+        .orElseThrow(()->new ResourceNotFoundException("constituency does not exist"));
+        return constituencyMapper.toResponse(constituency);
+
 
     }
 }

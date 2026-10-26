@@ -7,6 +7,8 @@ import com.voting.system.constituency.dto.CreateConstituencyRequest;
 
 @Mapper(componentModel = "spring")
 public interface ConstituencyMapper {
+
+    
     @Mapping(target = "id",ignore = true)
     @Mapping(target = "registeredVoters",ignore = true)
     @Mapping(target = "country",ignore = true)
@@ -14,6 +16,7 @@ public interface ConstituencyMapper {
     @Mapping(target="createdAt",ignore = true)
     @Mapping(target = "updatedAt",ignore = true)
     Constituency toEntity(CreateConstituencyRequest request);
+
 
 
     @Mapping(target = "countryId",source = "country.id")
