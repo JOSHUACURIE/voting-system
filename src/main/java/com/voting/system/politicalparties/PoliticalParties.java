@@ -9,7 +9,7 @@ import jakarta.persistence.CascadeType;
 import  jakarta.persistence.Entity;
 import  jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-
+import com.voting.system.enums.ApplicationStatus;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +33,8 @@ public  class PoliticalParties {
     @Column(name = "party_leader")
     private String partyLeader;
 
+    @Column(name = "status")
+    private ApplicationStatus status;
     @Column(name = "deputy_party_leader")
     private String dPartyLeader;
 
