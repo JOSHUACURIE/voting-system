@@ -80,4 +80,11 @@ Ward ward=wardRepository.findById(id)
 return wardMapper.toResponse(ward);
 }
 
+public void deleteWardById(UUID id){
+    Ward ward=wardRepository.findById(id)
+    .orElseThrow(()->new ResourceNotFoundException("ward does not exist"));
+
+    wardRepository.delete(ward);
+}
+
 }
