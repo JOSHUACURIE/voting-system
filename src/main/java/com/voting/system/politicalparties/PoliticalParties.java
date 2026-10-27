@@ -133,7 +133,12 @@ private List<Aspirants> aspirants = new ArrayList<>();
     protected void onUpdate() {
         this.updatedAt = Instant.now();
     }
-
+public  void setApplicationStatus(ApplicationStatus status){
+    this.status=status;
+}
+public ApplicationStatus getApplicationStatus(){
+    return  status;
+}
 
     
 }
