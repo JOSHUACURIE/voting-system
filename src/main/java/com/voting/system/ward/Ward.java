@@ -121,16 +121,19 @@ public  Instant getUpdatedAt(){
 
 
     //instant timestamping
-    @jakarta.persistence.PrePersist
-    protected void onCreate() {
-        this.createdAt = Instant.now();
-        this.updatedAt = Instant.now();
-    }
-
+     
     @jakarta.persistence.PreUpdate
     protected void onUpdate() {
         this.updatedAt = Instant.now();
     }
+  @jakarta.persistence.PrePersist
+protected void onCreate() {
+    this.createdAt = Instant.now();
+    this.updatedAt = Instant.now();
+    if (this.registeredVoters == null) {
+        this.registeredVoters = 0L;
+    }
+}
 
 
 }
