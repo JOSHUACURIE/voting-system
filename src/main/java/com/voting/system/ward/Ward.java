@@ -82,7 +82,7 @@ public  Long getRegisteredVoters(){
     return  registeredVoters;
 }
 
-public  void setCountry(County county){
+public  void setCounty(County county){
     this.county=county;
 }
 public County getCounty(){
