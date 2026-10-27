@@ -6,7 +6,9 @@ import com.voting.system.constituency.ConstituencyRepository;
 import com.voting.system.ward.dto.CreateWardRequest;
 import com.voting.system.common.exception.ResourceNotFoundException;
 import com.voting.system.ward.dto.WardResponse;
-import com.voting.system.ward.WardMapper;
+
+import java.util.List;
+import java.util.UUID;
 import com.voting.system.country.Country;
 import com.voting.system.county.County;
 import com.voting.system.constituency.Constituency;
@@ -64,6 +66,18 @@ Ward saved=wardRepository.save(ward);
 return  wardMapper.toResponse(saved);
 }
 
+public List<WardResponse>findAllWards(){
+    return wardRepository.findAll()
+    .stream()
+    .map(wardMapper::toResponse)
+    .toList();
+}
 
+public WardResponse findWardById(UUID id){
+Ward ward=wardRepository.findById(id)
+.orElseThrow(()->new ResourceNotFoundException("ward not found"));
+
+return wardMapper.toResponse(ward);
+}
 
 }
