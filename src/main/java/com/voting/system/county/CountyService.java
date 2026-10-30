@@ -4,7 +4,7 @@ import com.voting.system.county.dto.CountyResponse;
 import com.voting.system.county.dto.CreateCountyRequest;
 
 import jakarta.transaction.Transactional;
-
+import  java.util.List;
 import com.voting.system.country.Country;
 import com.voting.system.country.CountryRepository;
 import org.springframework.stereotype.Service;
@@ -42,5 +42,14 @@ public CountyResponse createCounty(CreateCountyRequest request){
     
 
     return  countyMapper.toResponse(saved);
+}
+
+public List<CountyResponse> getAllCounties(){
+   return countyRepistory.findAll().stream()
+    .map(countyMapper::toResponse)
+    .toList();
+
+    
+    
 }
 }

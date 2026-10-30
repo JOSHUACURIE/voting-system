@@ -26,6 +26,9 @@ public ResponseEntity<CountyResponse>register(@Valid @RequestBody CreateCountyRe
     return  ResponseEntity.status(HttpStatus.CREATED).body(response);
 }
 
-
+@GetMapping("/all")
+public ResponseEntity <List<CountyResponse>>getAll(){
+return ResponseEntity.ok(countyService.getAllCounties());
+}
     
 }
