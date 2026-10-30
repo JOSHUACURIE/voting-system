@@ -25,5 +25,7 @@ public ResponseEntity<CountyResponse>register(@Valid @RequestBody CreateCountyRe
     CountyResponse response=countyService.createCounty(request);
     return  ResponseEntity.status(HttpStatus.CREATED).body(response);
 }
+
+
     
 }

@@ -52,5 +52,8 @@ public  CountryResponse findCountryById(UUID id){
       .orElseThrow(() -> new ResourceNotFoundException("Country not found: " + id));
       return  countryMapper.toResponse(country);
 }
-    
+public  void deleteCountry(UUID id){
+countryRepository.deleteById(id);
+
+    }
 }

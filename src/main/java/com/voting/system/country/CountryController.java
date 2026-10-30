@@ -38,4 +38,10 @@ public class CountryController {
         return  ResponseEntity.ok(countryService.findCountryById(id));
 
     }
+
+    @DeleteMapping("/{id}")
+public ResponseEntity<Void> deleteCountry(@PathVariable UUID id){
+    countryService.deleteCountry(id);
+    return ResponseEntity.noContent().build();
+}
 }
